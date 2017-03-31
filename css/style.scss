@@ -1,0 +1,2732 @@
+@import "stylesheet.css";
+$white1: #ffffff;
+$black : #252525;
+$black1: #000000;
+$black2: #2b2b2b;
+$black3: #363636;
+$black4: #2b2b2b;
+$black5: #1c1c1c;
+$gray1 : #a6a6a6;
+$gray2 : #5a5a5a;
+$gray3 : #565555;
+$gray4 : #cccccc;
+$grey5 : #464646;
+$grey6 : #565555;
+$grey7 : #808080;
+$grey8 : #989898;
+$grey9 : #6c6c6c;
+$grey10 : #f7f7f7;
+$grey11 : #6f6f6f;
+$grey12 : #f3f3f3;
+$grey13 : #373737;
+$grey14 : #7d7d7d;
+$grey15 : #bfbfbf;
+$grey16: #848484;
+$red1 : #f13240;
+$red2 : #ad2e38;
+$red3 : #dd313e;
+$red4 : #ef2936;
+
+@mixin flexbox{
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+@mixin inline-flexbox{
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -moz-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+@mixin flex-wrap($value: nowrap) {
+  -webkit-flex-wrap: $value;
+  -moz-flex-wrap: $value;
+  @if $value == nowrap {
+    -ms-flex-wrap: none;
+  } @else {
+    -ms-flex-wrap: $value;
+  }
+  flex-wrap: $value;
+}
+@mixin transform($transforms){
+  -moz-transform: $transforms;
+  -o-transform: $transforms;
+  -ms-transform: $transforms;
+  -webkit-transform: $transforms;
+  transform: $transforms;
+}
+@mixin justify-content($value : center){
+  -webkit-box-pack: $value;
+  -webkit-justify-content: $value;
+  -moz-box-pack: $value;
+  -ms-flex-pack: $value;
+  justify-content: $value;
+}
+@mixin align-items($value : center){
+  -webkit-box-align: $value;
+  -webkit-align-items: $value;
+  -moz-box-align: $value;
+  -ms-flex-align: $value;
+  align-items: $value;
+}
+@mixin box-shadow($value){
+  -webkit-box-shadow: $value;
+  -moz-box-shadow: $value;
+  box-shadow: $value;
+}
+@mixin transition($value){
+  -webkit-transition: $value;
+  -o-transition: $value;
+  -moz-transition: $value;
+  transition: $value;
+}
+@mixin background-size($value: contain){
+  -webkit-background-size: $value;
+  -moz-background-size: $value;
+  -o-background-size: $value;
+  background-size: $value;
+}
+@mixin calc($property, $expression) {
+  #{$property}: -webkit-calc(#{$expression});
+  #{$property}: -moz-calc(#{$expression});
+  #{$property}: calc(#{$expression});
+}
+@mixin animation($value){
+  -webkit-animation: $value;
+  -moz-animation: $value;
+  -o-animation: $value;
+  animation: $value;
+}
+@mixin keyframes ($value) {
+  @-webkit-keyframes #{$value} {
+    @content;
+  }
+  @-moz-keyframes #{$value} {
+    @content;
+  }
+  @-o-keyframes #{$value} {
+    @content;
+  }
+  @keyframes #{$value} {
+    @content;
+  }
+}
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  margin: 0 0 390px 0;
+  font: 400 20px open_sans;
+  color:$black3;
+  @media all and( max-width: 1024px){
+    margin: 0 0 230px 0;
+  }
+  @media all and( max-width: 750px){
+    margin: 110px 0 215px 0;
+  }
+  @media all and( max-width: 500px){
+    margin: 110px 0 245px 0;
+  }
+}
+//---nav---
+.navigation{
+  .navbar{
+    background: $white1;
+    overflow-y: auto;
+    @media all and( max-width: 1024px) {
+      margin-top: 2px;
+    }
+    @media all and( max-width: 750px) {
+      margin-top: 0;
+    }
+  }
+  .navbar-fixed-top{
+    margin-top: 0;
+  }
+  .navbar-header{
+    width: 100%;
+    @media all and( max-width: 750px) {
+      height: 110px;
+      @include flexbox();
+      @include justify-content();
+      @include align-items();
+    }
+  }
+  .navbar-brand{
+    height: 125px;
+    width: 100%;
+    text-align: center;
+    padding: 0;
+    @media all and( max-width: 750px){
+      display: none;
+    }
+    &.menu{
+      display: none;
+      @media all and( max-width: 750px){
+        @include flexbox();
+        @include align-items();
+      }
+    }
+    @media all and( max-width: 1024px){
+      height: 70px;
+    }
+    @media all and( max-width: 750px){
+      height: 82px;
+      width: auto;
+    }
+  }
+  .logo{
+    height: 58px;
+    width: 298px;
+    display: block;
+    margin: 5px auto 60px auto;
+    @media all and( max-width: 1024px){
+      margin: 5px auto 30px auto;
+      height: 35px;
+      width: 230px;
+      padding-left: 40px;
+    }
+    @media all and( max-width: 750px){
+      height: 40px;
+      width: 235px;
+      margin: 20px auto 0 auto;
+      display: inline-block;
+    }
+  }
+  .menu-line{
+    height: 1px;
+    background: $gray1;
+    margin: 0 120px;
+    @include box-shadow(0 1px 1px 0 rgba(135,131,135,1));
+    @media all and( max-width: 1400px){
+      margin: 2px 45px 0px 45px;
+    }
+    @media all and( max-width: 750px){
+      display: none;
+    }
+  }
+  .navbar-toggle {
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    right: 25px;
+    top: 45px;
+    .icon-bar {
+      background: $black1;
+      width: 35px;
+      height: 3px;
+      margin: 0 0 8px 0;
+    }
+  }
+  .navbar-toggle .icon-bar {
+    position: relative;
+    @include transition(all 200ms ease-in-out);
+    &:nth-of-type(2){
+      top: 1px;
+    }
+    &:nth-of-type(3){
+      top: 2px;
+    }
+  }
+  .navbar-toggle.active .icon-bar{
+    &:nth-of-type(1){
+      top: 13px;
+      left: 0px;
+      @include transform(rotate(45deg))
+    }
+    &:nth-of-type(2){
+      background-color: transparent
+    }
+    &:nth-of-type(3){
+      top: -10px;
+      left: 0px;
+      @include transform(rotate(-45deg))
+    }
+  }
+  .navbar-nav{
+    width: 100%;
+    @include flexbox();
+    @include justify-content();
+    list-style: none;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    @media all and( max-width: 1024px){
+      margin: 13px auto 18px auto;
+    }
+    @media all and( max-width: 750px){
+      display: block;
+      margin: 0 auto;
+    }
+  }
+  .navbar-nav .active{
+    a{
+      color: $red1;
+      background: none;
+    }
+  }
+  .navbar-nav li {
+    width: 100%;
+    font: 600 18px open_sans;
+    color: $gray1;
+    padding: 8px 0;
+    text-align: center;
+    @media all and( max-width: 1024px){
+      width: 15%;
+      font-size: 15px;
+      font-weight: 700;
+      padding: 3px 0;
+    }
+    @media all and( max-width: 750px){
+      width: 100%;
+      margin: 0 auto;
+      font-size: 20px;
+      font-weight: 600;
+    }
+    a{
+      color: $gray1;
+      padding: 0;
+      @media all and( max-width: 750px){
+        height: 45px;
+        line-height: 18px;
+        letter-spacing: 1px;
+      }
+    }
+
+  }
+  .nav.open a:hover,
+  .nav a:hover,
+  .nav .open a:focus,
+  .nav a:hover{
+    background: none;
+  }
+  .social-img-header {
+    margin: 27px 6%;
+    text-align: right;
+    @media all and(max-width: 1024px) {
+      top: 17px;
+      right: 65px;
+      margin: 17px 65px 0 0;
+    }
+    @media all and(max-width: 750px) {
+      display: none;
+    }
+    a {
+      display: inline-block;
+      height: 30px;
+      width: 30px;
+      margin: 0 3px;
+      @media all and(max-width: 1024px) {
+        height: 21px;
+        width: 21px;
+        margin: 0 1px;
+      }
+    }
+  }
+  .navbar-nav .social-img-menu{
+    display: none;
+    @media all and(max-width: 750px) {
+      display: block;
+      height: 45px;
+      margin-top: -20px;
+      a{
+        display: inline-block;
+        height: 37px;
+        width: 37px;
+        margin: 0 2px;
+      }
+    }
+  }
+  .dropdown-menu{
+    padding: 20px;
+    li:hover a{
+      color: $gray2;
+    }
+  }
+  .img-facebook {
+    background: url("../img/facebook-header.png") no-repeat;
+    background-size: contain;
+  }
+  .img-camera {
+    background: url("../img/instagram-header.png") no-repeat;
+    background-size: contain;
+  }
+  .img-twitter {
+    background: url("../img/twitter-header.png") no-repeat;
+    background-size: contain;
+  }
+  .img-linkedin {
+    background: url("../img/linkedin-header.png") no-repeat;
+    @include background-size();
+  }
+  .navbar-collapse.in{
+    overflow: visible;
+    padding-bottom: 25px;
+    max-height: 1150px;
+    background: $white1;
+  }
+}
+//---blocks---
+.banner{
+  background: url("../img/home_banner_1.png") no-repeat;
+  @include background-size(cover);
+  background-position: top right;
+  position:relative;
+  .banner-text{
+    position: absolute;
+    letter-spacing: 12px;
+    width: 865px;
+    border: 2px solid $white1;
+    color: $white1;
+    text-transform: uppercase;
+    font: 65px corkituscan;
+    text-align: center;
+    margin: 0 auto;
+    padding: 30px 42px 17px 51px;
+    top: 50%;
+    left: 50%;
+    opacity:1;
+    background: rgba(0,0,0,0.3);
+    @include transform(translate(-50%, -50%));
+    @include transition(linear 0s);
+    @media all and( max-width: 1024px){
+      width: 467px;
+      font-size: 37px;
+      line-height: 42px;
+      padding: 15px 50px 10px 63px;
+      letter-spacing: 4.5px
+    }
+    @media all and( max-width: 750px) {
+      width: 87%;
+      font-size: 35px;
+      line-height: 58px;
+      padding: 20px 5% 19px 9%;
+      letter-spacing: 6.5px;
+    }
+  }
+}
+.breadcrumb{
+  background: none;
+  padding-top: 25px;
+  padding-left: 125px;
+  @media all and( max-width: 750px){
+    padding-left: 15px;
+  }
+  .breadcrumb-item{
+    font: 400 20px open_sans;
+    color: $grey16;
+    letter-spacing: 2.5px;
+    &:after{
+      display: inline-block;
+      padding-right: .5rem;
+      padding-left: .5rem;
+      color: $grey16;
+      content: ">";
+    }
+    &.active{
+      color: $white1;
+      letter-spacing: 2px;
+      &:after{
+        content: "";
+      }
+    }
+  }
+}
+.contact{
+  text-align: center;
+  .contact-content{
+    padding: 90px 70px 120px 70px;
+    @media all and( max-width: 1024px){
+      padding: 72px 11% 60px 11%;
+    }
+    @media all and( max-width: 750px){
+      padding: 65px 0 85px 0;
+    }
+  }
+  .block-header{
+    margin: 8px auto 32px auto;
+    @media all and( max-width: 1024px){
+      letter-spacing: 2.5px;
+      margin: 8px auto 18px auto;
+    }
+    @media all and( max-width: 750px){
+      margin: 8px auto 46px auto;
+      letter-spacing: 4.7px;
+    }
+  }
+  .contact-text{
+    font:400 20px open_sans;
+    text-align: center;
+    color: $grey6;
+    padding: 0 38px;
+    line-height: 35px;
+    margin-bottom: 0px;
+    @media all and( max-width: 1024px){
+      font-size: 15px;
+      line-height: 24px;
+      padding: 0 5%;
+      margin-bottom: 47px;
+    }
+    @media all and( max-width: 750px){
+      letter-spacing: 0.3px;
+      line-height: 23px;
+      padding: 0 16px;
+      font-size: 14px;
+      margin-bottom: 45px;
+    }
+  }
+  .contact-form{
+    @media all and( max-width: 1024px){
+      padding: 0;
+    }
+    @media all and( max-width: 750px){
+      padding: 0 12%;
+    }
+  }
+  .contact-input,
+  .contact-textarea {
+    font:400 20px open_sans;
+    color: $grey6;
+    height: 48px;
+    width: 100%;
+    border: none;
+    resize: none;
+    border-bottom: 1px solid $gray1;
+    outline: none;
+    margin-top: 110px;
+    @media all and( max-width: 1024px) {
+      margin-top: 71px;
+      padding-bottom: 0;
+      height: 30px;
+    }
+    @media all and( max-width: 750px) {
+      margin-top: 57px;
+      height: 70px;
+    }
+
+
+    @media all and( max-width: 1024px){
+      font-size: 15px;
+      padding-left: 10px;
+
+    }
+    @media all and( max-width: 750px){
+      font-size: 14px;
+      padding-left: 0;
+    }
+  }
+  .contact-input:last-of-type{
+    margin-right: 0;
+  }
+  .contact-input:nth-of-type(2){
+    @media all and( max-width: 1024px) {
+      margin-right: 0;
+    }
+    @media all and( max-width: 750px) {
+      margin-top: 64px;
+    }
+  }
+  .contact-input:nth-of-type(3){
+    @media all and( max-width: 1024px) {
+      margin-top: 18px;
+    }
+    @media all and( max-width: 750px) {
+      margin-top: 61px;
+    }
+  }
+
+  .contact-input{
+    width: 32%;
+    float: left;
+    margin-right: 1.5%;
+    margin-top: 75px;
+    padding-bottom: 20px;
+    @media all and( max-width: 1024px){
+      width: 49%;
+      padding-bottom: 6px;
+      height: 39px;
+    }
+    @media all and( max-width: 750px){
+      width: 100%;
+      margin-right: 0;
+      margin-top: 45px;
+    }
+  }
+  .contact-input::-webkit-input-placeholder,
+  .contact-textarea::-webkit-input-placeholder { /* Chrome */
+    color: $grey7;
+  }
+  .contact-input:-ms-input-placeholder,
+  .contact-textarea:-ms-input-placeholder {
+    color: $grey7;
+  }
+  .contact-input::-moz-placeholder,
+  .contact-textarea::-moz-placeholder { /* Firefox 19+ */
+    color: $grey7;
+    opacity: 1;
+  }
+  .contact-input:-moz-placeholder,
+  .contact-textarea:-moz-placeholder { /* Firefox 4 - 18 */
+    color: $grey7;
+    opacity: 1;
+  }
+
+  .contact-button{
+    margin: 0 auto;
+    color: $white1;
+    background: $red1;
+    border: none;
+    outline: none;
+    border-radius: 0;
+    display: block;
+    margin-top: 45px;
+    width: 160px;
+    height: 50px;
+    font: 600 20px open_sans;
+    @media all and( max-width: 1024px) {
+      font-size: 15px;
+      width: 150px;
+      height: 37px;
+      margin-top: 37px;
+    }
+    @media all and( max-width: 750px) {
+      font-size: 14px;
+      width: 130px;
+      height: 30px;
+      margin-top: 25px;
+    }
+  }
+}
+.story{
+  background: url("../img/story_background.png");
+  padding-bottom: 40px;
+  @media all and( max-width: 1024px){
+    padding-bottom: 20px;
+  }
+  @media all and( max-width: 750px){
+    padding: 0;
+  }
+  .block-header{
+    margin: 8px auto 72px auto;
+    @media all and( max-width: 1024px){
+      margin: 8px auto 37px auto;
+    }
+    @media all and( max-width: 750px){
+      margin: 8px auto 45px auto;
+    }
+  }
+  .story-content{
+    background: $white1;
+    width: 87.6%;
+    margin: 0 auto;
+    padding: 130px 12.6% 110px 12.6%;
+    margin-top: -40px;
+    text-align: center;
+    position: relative;
+    @media all and( max-width: 1024px){
+      width: 97%;
+      margin-top: -20px;
+      padding: 52px 115px;
+    }
+    @media all and( max-width: 750px){
+      width: 100%;
+      padding: 32px 45px;
+    }
+  }
+  .story-text{
+    font: 400 20px open_sans;
+    text-align: justify;
+    line-height: 35px;
+    color: $black2;
+    @media all and( max-width: 1024px){
+      font-size: 16px;
+      line-height: 20px;
+    }
+    @media all and( max-width: 750px){
+      font-size: 14px;
+      line-height: 18px;
+    }
+  }
+  .story-img{
+    height: auto;
+    width: 100%;
+    margin: 50px 0 57px 0;
+    @media all and( max-width: 1024px){
+      margin: -7px 0 40px 0;
+    }
+    @media all and( max-width: 750px){
+      display: none;
+    }
+  }
+}
+.subscribe{
+  @include flexbox();
+  @include flex-wrap(wrap);
+  @media all and( max-width: 750px){
+    display: block;
+  }
+  .left-content{
+    width: 50%;
+    background: $black;
+    padding: 70px 200px 65px 200px;
+    @media all and( max-width: 1500px){
+      padding: 70px 100px 65px 100px;
+    }
+    @media all and( max-width: 1024px){
+      padding: 40px 65px 26px 78px;
+    }
+    @media all and( max-width: 750px){
+      width: 100%;
+      display: block;
+      padding: 92px 0 76px 0;
+    }
+    .subscribe-header{
+      color: $white1;
+      font: 34px corkiregular;
+      line-height: 41px;
+      letter-spacing: 2.2px;
+      text-align: center;
+      @media all and( max-width: 1024px){
+        letter-spacing: 1.5px;
+        font-size: 19px;
+        line-height: 24px;
+      }
+      @media all and( max-width: 750px){
+        font-size: 18px;
+        line-height: 50px;
+        letter-spacing: 2px;
+        margin: auto 8.5% auto 8.5%;
+      }
+    }
+    .mc-field-group{
+      float: left;
+      @include calc(width, "100% - 35px");
+    }
+    .subscribe-form{
+      border-bottom: 1px solid $grey5;
+      margin: 48px 70px 7px 65px;
+      @media all and( max-width: 1024px){
+        margin: 24px 36px 7px 23px;
+        display: flex;
+      }
+      @media all and( max-width: 750px){
+        margin: 75px 33px 7px 35px;
+      }
+    }
+    .subscribe-input{
+      background: $black;;
+      border: none;
+      font: 400 20px open_sans;
+      color: $white1;
+      outline: none;
+      @media all and( max-width: 1024px){
+        font-size: 15px;
+      }
+      @media all and( max-width: 750px){
+        font-size: 14px;
+        line-height: 20px;
+        padding-bottom: 20px;
+      }
+    }
+    .subscribe-button{
+      height: 33px;
+      width: 32px;
+      background: $black;;
+      border:3px solid $red3;
+      color: $white1;
+      margin-bottom: 8px;
+      @media all and( max-width: 750px){
+        border: 2px solid #dd313e;
+      }
+    }
+  }
+  .subscribe-img{
+    background: url("../img/subscribe.png") no-repeat;
+    @include background-size(cover);
+    display: table-cell;
+    width: 50%;
+    @media all and( max-width: 750px){
+      display: none;
+    }
+  }
+}
+.delimiter{
+  width: 100%;
+  display: table;
+  margin: 65px 0;
+  color:$gray4;
+  font: 600 20px open_sans;
+  position: relative;
+  @media all and( max-width: 1024px){
+    margin: 42px 0;
+  }
+  @media all and( max-width: 750px){
+    margin: 20px 0 15px 0;
+  }
+  .decor-point{
+    background: url("../img/decor_point.png") no-repeat;
+    height: 10px;
+    width: 10px;
+    margin: 0 auto;
+    display: block;
+    @media all and( max-width: 1024px){
+      @include background-size();
+      height: 6px;
+      width: 6px;
+    }
+  }
+}
+.delimiter:before{
+  content: '';
+  width: 48%;
+  height: 2px;
+  margin-right: 10px;
+  background: $gray4;
+  color:$gray4;
+  @include flexbox();
+  position: absolute;
+  left: 0;
+  top:2px;
+  @media all and( max-width: 1024px){
+    width: 65px;
+    @include calc(margin-left, "49% - 65px");
+  }
+  @media all and( max-width: 750px){
+    @include calc(margin-left, "48% - 65px");
+  }
+}
+.delimiter:after {
+  content: '';
+  width: 48%;
+  height: 2px;
+  margin-left: 10px;
+  background: $gray4;
+  color: $gray4;
+  position: absolute;
+  right: 0;
+  top: 2px;
+  @include inline-flexbox();
+  @media all and(max-width: 1024px) {
+    width: 65px;
+    @include calc(margin-right, "49% - 65px");
+  }
+  @media all and(max-width: 750px) {
+    @include calc(margin-right, "48% - 65px");
+  }
+}
+.instead-img{
+  display: none;
+  @media all and( max-width: 750px){
+    display: table;
+  }
+}
+.block-header{
+  letter-spacing: 4px;
+  font: 46px corkituscan;
+  text-transform: uppercase;
+  text-align: center;
+  color: $gray2;
+  position: relative;
+  display: inline-block;
+  @media all and( max-width: 1024px){
+    font-size: 24px;
+    margin: 8px auto 35px auto;
+  }
+  @media all and( max-width: 750px){
+    font-size: 25px;
+    margin: 7px auto 45px auto;
+  }
+}
+.block-header:before{
+  content: '';
+  background: url("../img/header_decor.png") no-repeat;
+  height: 25px;
+  width: 25px;
+  position: absolute;
+  left: -45px;
+  top: 50%;
+  @include background-size();
+  @include transform(translateY(-50%));
+  @media all and( max-width: 1024px){
+    height: 14px;
+    width: 14px;
+    left: -20px;
+  }
+  @media all and( max-width: 750px){
+    height: 10px;
+    width: 10px;
+    left: -20px;
+  }
+}
+.block-header:after{
+  content: '';
+  background: url("../img/header_decor.png") no-repeat;
+  height: 25px;
+  width: 25px;
+  position: absolute;
+  right: -35px;
+  top: 50%;
+  margin-top: -4px;
+  @include background-size();
+  @include transform(translateY(-50%) rotate(180deg));
+  @media all and( max-width: 1024px){
+    height: 14px;
+    width: 14px;
+    right: -15px;
+    margin-top: -3px;
+  }
+  @media all and( max-width: 750px){
+    height: 10px;
+    width: 10px;
+    right: -20px;
+    margin-top: -4px
+  }
+}
+.white-text-block,
+.gray-text-block{
+  background: $grey12;
+  padding: 65px 19% 30px 18.6%;
+  @media all and( max-width: 1024px) {
+    padding: 40px 13% 30px 12.6%;
+  }
+  @media all and( max-width: 750px) {
+    padding: 40px 45px 10px 45px;
+  }
+  .text-header-block{
+    font: 600 24px open_sans;
+    color: $black3;
+    text-align: left;
+    letter-spacing: 2px;
+    @media all and( max-width: 1024px) {
+      font-size: 20px;
+    }
+    @media all and( max-width: 750px) {
+      font-size: 18px;
+    }
+  }
+  .text-block{
+    font: 400 20px open_sans;
+    color: $black3;
+    text-align: justify;
+    line-height: 37px;
+    letter-spacing: 2px;
+    margin: 30px 0;
+    .text-bold{
+      font-weight: 600;
+    }
+    &.italic{
+      font-style: italic;
+      line-height: 40px;
+      margin: 30px 0 35px 0;
+    }
+    &.italic:last-of-type{
+      margin-bottom: 90px;
+    }
+    &.indent{
+      text-indent: 30px;
+    }
+    @media all and( max-width: 1024px) {
+     font-size: 16px;
+      line-height: 24px;
+      letter-spacing: 1px;
+    }
+    @media all and( max-width: 750px){
+      font-size: 14px;
+      line-height: 18px;
+      letter-spacing: 0;
+    }
+  }
+  .img-block{
+    height: auto;
+    width: 100%;
+    margin: 30px 0 70px 0;
+    @media all and( max-width: 750px) {
+      display: none;
+    }
+  }
+}
+.white-text-block {
+  background: none;
+  .text-block{
+    margin: 40px 0;
+    @media all and(max-width: 750px){
+      margin: 20px 0;
+    }
+  }
+}
+.accordions {
+  padding: 125px 19% 20px 18.6%;
+  text-align: center;
+  @media all and(max-width: 1024px) {
+    padding: 52px 13% 30px 12.6%;
+  }
+  @media all and(max-width: 750px) {
+    padding: 52px 45px 20px 45px;
+  }
+  .panel-group {
+    margin-top: 65px;
+    @media all and(max-width: 1024px) {
+      margin-top: 25px;
+    }
+  }
+  .panel {
+    margin-bottom: 20px;
+  }
+  .panel-heading {
+    position: relative;
+    padding: 0;
+    background: none;
+  }
+  .panel-title {
+    text-align: left;
+    a {
+      padding: 18px 40px 10px 40px;
+      display: block;
+      text-decoration: none;
+      font: 600 27px open_suns;
+      color: #373737;
+      line-height: 70px;
+      letter-spacing: 2px;
+      @media all and(max-width: 1024px) {
+        font-size: 23px;
+      }
+      @media all and(max-width: 750px) {
+        font-size: 19px;
+        padding: 20px 40px 20px 20px;
+        letter-spacing: 0;
+        line-height: 40px;
+      }
+    }
+    a:after {
+      content: "|";
+      position: absolute;
+      right: 40px;
+      top: 42px;
+      font: 800 18px open_sans;
+      color: $grey14;
+      @include transform(rotate(90deg));
+      @media all and(max-width: 750px) {
+        top: 19px;
+        right: 20px;
+      }
+    }
+    a:before {
+      content: "|";
+      position: absolute;
+      font: 800 18px open_sans;
+      color: $grey14;
+      top: 40px;
+      right: 40px;
+      @include transform(rotate(90deg));
+      @media all and(max-width: 750px) {
+        top:18px;
+        right: 20px;
+      }
+    }
+    .collapsed {
+      background: $grey12;
+      padding: 10px 60px 10px 40px;
+    }
+    .collapsed:after {
+      top: 36px;
+      @media all and(max-width: 750px) {
+        top:21px;
+      }
+    }
+    .collapsed:before {
+      top: 34px;
+      @include animation(accordionIn 0.2s linear forwards);
+      @media all and(max-width: 750px) {
+        top: 19px;
+        @include animation(accordionIn2 0.2s linear forwards);
+      }
+    }
+  @keyframes accordionIn {
+    100% {
+      right: 40px;
+      top: 32px;
+      @include transform(rotate(0deg));
+    }
+  }
+  @keyframes accordionIn2 {
+    100% {
+      right: 20px;
+      @include transform(rotate(0deg));
+    }
+  }
+}
+  .panel-collapse{
+    .panel-body{
+      text-align: justify;
+      border-top: none!important;
+      padding: 10px 100px 0 80px;
+      @media all and( max-width: 750px){
+        padding: 10px 20px 0 20px;
+      }
+      p{
+        font: 400 20px open_sans;
+        letter-spacing: 2.7px;
+        line-height: 35px;
+        margin-bottom: 42px;
+        @media all and( max-width: 1024px) {
+          font-size: 16px;
+
+        }
+        @media all and( max-width: 750px){
+          font-size: 14px;
+          line-height: 18px;
+          letter-spacing: 0;
+          margin-bottom: 20px;
+        }
+      }
+    }
+  }
+}
+.pricing{
+  padding: 80px 19% 20px 18.6%;
+  text-align: center;
+  @media all and( max-width: 1024px) {
+    padding: 80px 13% 20px 12.6%;
+  }
+  @media all and( max-width: 750px){
+    padding: 80px 45px 20px 45px;
+  }
+  .pricing-text{
+    text-align: justify;
+    font: 400 20px open_sans;
+    line-height: 38px;
+    letter-spacing: 2px;
+    margin-bottom: 38px;
+    @media all and( max-width: 1024px) {
+      font-size: 16px;
+      line-height: 24px;
+    }
+    @media all and( max-width: 750px) {
+      font-size: 14px;
+      line-height: 18px;
+      letter-spacing: 0;
+    }
+  }
+  .delimiter{
+    margin: 90px 0 65px 0;
+    @media all and( max-width: 1024px) {
+      margin: 60px 0 45px 0;
+    }
+    @media all and( max-width: 750px) {
+      margin: 30px 0 35px 0;
+    }
+  }
+  .block-header{
+    margin-bottom: 55px;
+    @media all and( max-width: 750px) {
+      margin-bottom: 30px;
+    }
+  }
+  .pricing-table{
+    margin: 85px 0 55px 0;
+    @include flexbox();
+    @include flex-wrap(wrap);
+    @media all and( max-width: 750px) {
+      margin: 35px 0 55px 0;
+    }
+  }
+  .pricing-block{
+    width: 32%;
+    margin-right: 2%;
+    border: 1px solid $grey15;
+    padding-bottom: 45px;
+    @media all and( max-width: 1410px) {
+      width: 100%;
+      margin-right: 0;
+      margin-bottom: 20px;
+      padding: 0;
+      @include flexbox();
+    }
+
+    @media all and( max-width: 750px) {
+      display: block;
+    }
+  }
+  .pricing-header-content{
+    @media all and( max-width: 1410px) {
+      border-right: 1px solid $grey15;
+      width: 40%;
+    }
+    @media all and( max-width: 750px) {
+      border: none;
+      width: 100%;
+    }
+  }
+  .pricing-block:last-of-type{
+    margin-right: 0;
+  }
+  .pricing-header{
+    min-height: 127px;
+    background: $black4;
+    color: $white1;
+    letter-spacing: 2.5px;
+    font: 400 23px open_sans;
+    padding: 29px 60px;
+    line-height: 35px;
+    @include flexbox();
+    @include justify-content();
+    @include align-items();
+    @media all and( max-width: 1920px) {
+      min-height: 165px;
+    }
+    @media all and( max-width: 1935px) {
+      min-height: 200px;
+    }
+    @media all and( max-width: 1024px) {
+      font-size: 19px;
+      line-height: 27px;
+      min-height: 127px;
+    }
+    @media all and( max-width: 750px) {
+      min-height: 80px;
+      font-size: 19px;
+      line-height: 47px;
+      letter-spacing: 0;
+    }
+  }
+  .pricing-value{
+    color: $red4;
+    font: 400 52px corkiregular;
+    letter-spacing: 2px;
+    min-height: 140px;
+    position: relative;
+    @include flexbox();
+    @include justify-content();
+    @include align-items();
+    @media all and( max-width: 1024px){
+      font-size: 40px;
+    }
+    @media all and( max-width: 750px){
+      letter-spacing: 0;
+    }
+  }
+  .pricing-block:last-of-type{
+    .pricing-value:after{
+      content:"or more";
+      position: absolute;
+      bottom: 12px;
+      font: 400 25px open_sans;
+      letter-spacing: 2px;
+      left: 50%;
+      @include transform(translateX(-50%));
+      @media all and( max-width: 1024px){
+        font-size: 21px;
+      }
+      @media all and( max-width: 750px){
+        font-size: 19px;
+        width: 100%;
+      }
+    }
+  }
+  .pricing-description{
+    list-style: none;
+    text-align: justify;
+    padding: 0 35px;
+    font: 400 22px open_sans;
+    margin-top: -5px;
+    @media all and( max-width: 1410px) {
+      padding: 35px;
+      margin: 0;
+      width: 60%;
+    }
+    @media all and( max-width: 1024px) {
+      font-size: 18px;
+    }
+    @media all and( max-width: 750px) {
+      font-size: 14px;
+      padding: 0 35px;
+      width: 100%;
+    }
+    li{
+      line-height: 35px;
+      margin-bottom: 13px;
+      @media all and( max-width: 1024px) {
+        line-height: 30px;
+        margin-bottom: 10px;
+      }
+      @media all and( max-width: 750px) {
+        line-height: 18px;
+        margin-bottom: 15px;
+      }
+    }
+    li:before{
+      content:"-";
+      margin-right: 10px;
+    }
+  }
+}
+.additional-information{
+  text-align: center;
+  .block-header{
+    font-size: 36px;
+    @media all and( max-width: 1024px) {
+      font-size: 24px;
+    }
+    @media all and( max-width: 750px) {
+      font-size: 30px;
+    }
+  }
+  .block-header:before{
+    @media all and( max-width: 400px) {
+      left:15px;
+    }
+  }
+  .block-header:after{
+    @media all and( max-width: 400px) {
+      right:15px;
+    }
+  }
+  .information-container{
+    @include flexbox();
+    @include flex-wrap(wrap);
+    margin: 45px 0;
+    @media all and( max-width: 750px) {
+      margin: 20px 0;
+    }
+  }
+  .information-container-block{
+    height: 320px;
+    width: 25%;
+    overflow:hidden;
+    @media all and( max-width: 750px) {
+      width: 50%;
+      height: 200px;
+    }
+    @media all and( max-width: 550px){
+      width: 100%;
+      height: 150px;
+    }
+  }
+  .information-block{
+    width: 100%;
+    height: 100%;
+    @media all and( max-width: 1024px) {
+      font-size: 20px;
+    }
+    @media all and( max-width: 750px) {
+      font-size: 20px;
+      letter-spacing: 0;
+    }
+  }
+  .information-block:hover {
+    @include transform(scale(1.2));
+    z-index: 10;
+  }
+  .information-href{
+    height: 100%;
+    width: 100%;
+    background: rgba(0,0,0,0.7);
+    font: 400 24px open_sans;
+    color: $white1;
+    letter-spacing: 2px;
+    text-transform: capitalize;
+    @include flexbox();
+    @include justify-content();
+    @include align-items();
+    @media all and( max-width: 750px) {
+      font-size: 20px;
+    }
+  }
+  .information-href:hover{
+    background: rgba(166, 27, 22, 0.7);
+  }
+}
+//---pages---
+//---patenteur-home-page------
+.patenteur-home-page{
+  .banner{
+    height: 690px;
+    @media all and( max-width: 1024px){
+      height: 360px;
+    }
+    @media all and( max-width: 750px){
+      height: 400px;
+    }
+    @include keyframes (fade){
+      0%{
+        opacity: 0;
+      }
+      25%{
+        opacity: 1;
+      }
+      50%{
+        opacity: 0;
+      }
+    };
+    .banner-text{
+      line-height: 80px;
+      opacity:0;
+      @media all and( max-width: 1024px){
+        line-height: 42px;
+      }
+      @media all and( max-width: 750px){
+        line-height: 50px;
+      }
+      &.one {
+        @include animation(fade 10s linear 0s infinite);
+      }
+      &.two {
+        @include animation(fade 10s linear 5s infinite);
+      }
+    }
+  }
+  .testimonials{
+    text-align: center;
+    padding: 0 4%;
+    .block-header{
+      margin: 80px 0 55px 0;
+      @media all and( max-width: 1024px){
+        letter-spacing: 2px;
+        margin: 45px 0 38px 0;
+      }
+      @media all and( max-width: 750px){
+        letter-spacing: 5px;
+        margin: 40px 0 30px 0;
+      }
+    }
+    //--------------------------
+    .testimonials-photo{
+      margin: 0 auto;
+      height: 90px;
+      width: 90px;
+      @media all and( max-width: 1024px){
+        height: 60px;
+        width: 60px;
+      }
+      @media all and( max-width: 750px){
+        height: 120px;
+        width: 120px;
+      }
+    }
+    .testimonials-name{
+      font: 600 20px open_sans;
+      color: $grey6;
+      margin: 30px 0 0 0;
+      @media all and( max-width: 1024px){
+        font-size: 17px;
+        margin: 18px 0 0 0;
+      }
+      @media all and( max-width: 750px){
+        font-size: 15px;
+        margin: 34px 0 0 0;
+      }
+    }
+    .testimonials-description{
+      font: 400 20px open_sans;
+      color: $grey8;
+      letter-spacing: -0.5px;
+      margin: 0px 0 15px 0;
+      @media all and( max-width: 1024px){
+        font-size: 16px;
+        letter-spacing: -1px;
+      }
+      @media all and( max-width: 750px){
+        font-size: 14px;
+        margin: 0px 0 10px 0;
+      }
+    }
+    .testimonials-text{
+      font: 400 20px open_sans;
+      color: $grey9;
+      font-style: italic;
+      letter-spacing: -0.5px;
+      @media all and( max-width: 1024px){
+        font-size: 16px;
+        letter-spacing: 0;
+      }
+      @media all and( max-width: 750px){
+        font-size: 14px;
+        letter-spacing: 1px;
+        line-height: 25px;
+      }
+    }
+    .owl-controls{
+      margin: 45px 0 75px 0;
+      @media all and( max-width: 1024px){
+        margin: 7px 0 28px 0;
+      }
+    }
+    .owl-item{
+      padding: 0 40px;
+    }
+    .owl-page span {
+      border-radius: 0;
+      width: 15px;
+      height: 15px;
+      background: none;
+      border: 1px solid $gray4;
+      @media all and(max-width: 1024px) {
+        width: 14px;
+        height: 14px;
+        margin: 0 4px;
+        border: 2px solid $gray4;
+      }
+      @media all and(max-width: 750px) {
+        width: 25px;
+        height: 25px;
+        margin: 0 8px;
+        border: 2px solid $gray4;
+      }
+    }
+    .owl-page.active span{
+        background: $red1;
+        border: none;
+        @media all and( max-width: 1024px){
+          background: none;
+          border: 2px solid $red1;
+        }
+        @media all and( max-width: 750px){
+          background: $red1;
+          border:  none;
+        }
+      }
+    .owl-page:hover span{
+      background: $red1;
+      border: none;
+      opacity: 1;
+      @media all and( max-width: 1024px){
+        background: none;
+        border: 2px solid $red1;
+      }
+      @media all and( max-width: 750px){
+        background: $red1;
+        border:  none;
+      }
+    }
+  }
+}
+.trademarks_searches,
+.trademark_attorneys,
+.trademark_advice,
+.additional_article,
+.global_patents,
+.australian_patents,
+.biotech_patents,
+.design_registration,
+.trademark,
+.patents,
+.our-team,
+.our_story,
+.contact-page {
+  .banner {
+    height: 465px;
+    @media all and(max-width: 1024px) {
+      height: 360px;
+    }
+    @media all and(max-width: 750px) {
+      height: 370px;
+    }
+    .banner-text {
+      line-height: 155px;
+      @media all and(max-width: 1024px) {
+        top: 55%;
+        line-height: 85px;
+      }
+      @media all and(max-width: 750px) {
+        line-height: 115px;
+        top: 51%;
+      }
+      @media all and(max-width: 450px) {
+        font-size: 35px;
+        line-height: 40px;
+      }
+    }
+  }
+}
+//---contact------
+.contact-page{
+  .banner {
+    background: url("../img/ContactUs-min.jpg") no-repeat;
+    @include background-size(cover);
+    background-position: 50%;
+  }
+  .contact{
+    .contact-content{
+      padding: 128px 70px 120px 70px;
+      @media all and( max-width: 1024px){
+        padding: 72px 11% 60px 11%;
+      }
+      @media all and( max-width: 750px){
+        padding: 65px 0 85px 0;
+      }
+    }
+  }
+  .map{
+    @include flexbox();
+    @include flex-wrap(wrap);
+    .map-row{
+      @media all and(max-width: 1500px) {
+        display: table-row;
+      }
+    }
+    .map-place,
+    #google-map-1,
+    #google-map-2{
+      width: 25%;
+      @media all and(max-width: 1500px) {
+        width: 50%;
+      }
+      a img {
+        display:none;
+      }
+      .gmnoprint:not(.gm-bundled-control) {
+        display: none;
+      }
+      .gm-bundled-control .gmnoprint {
+        display: block;
+      }
+      a[href^="http://maps.google.com/maps"]{display:none !important}
+      a[href^="https://maps.google.com/maps"]{display:none !important}
+      a[href^="https://www.google.com/maps"]{display:none !important}
+    }
+    .map-place{
+      margin-bottom: 2px;
+      background: $grey10;
+      @media all and(max-width: 1500px) {
+        margin-bottom: 0;
+      }
+      &.map-place-1{
+        padding: 60px 65px 44px 100px;
+        @media all and(max-width: 1500px) {
+          order: 0;
+          margin-bottom: 10px;
+        }
+        @media all and(max-width: 1024px) {
+          padding: 20px;
+        }
+      }
+      &.map-place-2{
+        padding: 47px 55px 44px 175px;
+        @media all and(max-width: 1500px) {
+          padding: 60px 65px 44px 100px;
+          order: 3;
+          margin-bottom: 2px;
+        }
+        @media all and(max-width: 1024px) {
+          padding: 20px;
+        }
+      }
+    }
+    #google-map-1{
+      @media all and(max-width: 1500px) {
+        order: 1;
+        margin-bottom: 10px;
+      }
+    }
+
+    #google-map-2{
+      @media all and(max-width: 1500px) {
+        order: 2;
+      }
+    }
+    .map-place-name{
+      font: 600 23px open_sans;
+      color: $grey11;
+      text-align: left;
+      letter-spacing: 2px;
+      margin-bottom: 18px;
+      @media all and(max-width: 1024px) {
+        font-size: 18px;
+      }
+      &.map-place-name-1{
+        color:red;
+      }
+    }
+    .map-phone,
+    .map-address{
+      line-height: 34px;
+      font: 400 19px open_sans;
+      color: $grey11;
+      text-align: left;
+      @media all and(max-width: 1024px) {
+        font-size: 14px;
+      }
+      span{
+        font-weight: 600;
+      }
+    }
+    .map-address{
+      line-height: 36px;
+    }
+    .fa-map-marker{
+      color: $red1
+    }
+  }
+}
+//---about us------
+.trademark,
+.patents,
+.our_story{
+  .story{
+    background: none;
+    padding: 0;
+    .story-content{
+      margin: 0;
+      width: 100%;
+      padding: 90px 20.9% 110px 16.9%;
+      @media all and(max-width: 1024px) {
+        padding: 90px 12.9% 110px 12.9%;
+      }
+      @media all and(max-width: 750px) {
+        padding: 90px 5.9% 110px 5.9%;
+      }
+      p{
+        line-height: 37px;
+        @media all and(max-width: 1024px) {
+          line-height: 21px;
+        }
+        @media all and(max-width: 750px) {
+          line-height: 18px;
+        }
+      }
+      p:nth-child(1){
+        margin-bottom: 75px;
+        @media all and(max-width: 1024px) {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}
+//---our team------
+.our-team{
+  .banner {
+    background: url("../img/OurStory-min.jpg") no-repeat;
+    @include background-size(cover);
+    background-position: 50% 25%;
+  }
+  .team-content{
+    padding: 0 20.9% 125px 16.9%;
+    @media all and(max-width: 1024px) {
+      padding: 90px 12.9% 110px 12.9%;
+    }
+    @media all and(max-width: 750px) {
+      padding: 90px 5.9% 110px 5.9%;
+    }
+  }
+  .team-photo-container{
+    overflow: hidden;
+    height: 383px!important;
+    width: 383px!important;
+    border-radius: 50%;
+    margin: 0 auto;
+    @media all and(max-width: 1024px) {
+      height: 250px!important;
+      width: 250px!important;
+    }
+
+  }
+  .team-photo{
+    @include transform(scale(0.3));
+    @media all and(max-width: 1024px) {
+      @include transform(scale(0.15));
+    }
+    &.one{
+      margin: -1466px 0 0 -2350px;
+      @media all and(max-width: 1024px) {
+        margin: -1674px 0 0 -2538px;
+      }
+    }
+    &.two{
+      margin: -1440px 0 0 -2741px;
+      @media all and(max-width: 1024px) {
+        margin: -1651px 0 0 -2760px;
+      }
+    }
+
+  }
+  .photo-signature{
+    text-align: center;
+    font: 600 26px open_sans;
+    color: $black;
+    letter-spacing: 1.5px;
+    margin: 40px 0;
+    @media all and(max-width: 1024px) {
+      font-size: 21px;
+    }
+    @media all and(max-width: 750px) {
+      font-size: 18px;
+    }
+  }
+  p{
+    font: 400 21px open_sans;
+    color: #252525;
+    letter-spacing: 1.5px;
+    text-align: justify;
+    line-height: 37px;
+    margin-bottom: 37px;
+    @media all and(max-width: 1024px) {
+      font-size: 16px;
+    }
+    @media all and(max-width: 750px) {
+      font-size: 14px;
+      line-height: 20px;
+    }
+  }
+  .delimiter{
+    margin: 85px 0;
+  }
+}
+//---our story------
+.our_story{
+  .banner {
+    background: url("../img/OurStory-min.jpg") no-repeat;
+    @include background-size(cover);
+    background-position: 50% 25%;
+  }
+}
+//---patents-------
+.patents{
+  .banner{
+    background: url("../img/Patents-min.jpeg") no-repeat;
+    @include background-size(cover);
+    background-position: 50% 24%;;
+  }
+ .story{
+   .story-content{
+     padding: 10px 19% 110px 18.6%;
+     @media all and( max-width: 1024px){
+       padding: 10px 13% 52px 12.6%;
+     }
+     @media all and( max-width: 750px){
+       padding: 10px 45px;
+     }
+   }
+   .delimiter{
+     margin: 65px 0 90px 0;
+     @media all and( max-width: 1024px){
+       margin: 0 0 42px 0;
+     }
+     @media all and( max-width: 750px){
+       margin: 15px 0 30px 0;
+     }
+   }
+   .story-text{
+     margin-bottom: 40px;
+     letter-spacing: 2px;
+     @media all and( max-width: 1024px){
+       margin-bottom: 20px;
+     }
+     @media all and( max-width: 750px){
+       margin-bottom: 40px;
+       letter-spacing: 0;
+     }
+   }
+   .story-img{
+     margin: 42px 0 85px 0;
+     @media all and( max-width: 1024px){
+       margin: -20px 0 40px 0;
+     }
+   }
+ }
+ .gray-text-block.second-block{
+     padding: 65px 19% 60px 18.6%;
+     @media all and( max-width: 1024px) {
+       padding: 40px 13% 30px 12.6%;
+     }
+     @media all and( max-width: 750px){
+       padding: 15px 45px 10px 45px;
+     }
+     .text-block{
+       margin: 30px 0 38px 0;
+     }
+ }
+
+ .additional-information{
+   .information-container-block:nth-child(1){
+     .information-block {
+       background: url("../img/GlobalPatents-min.jpeg") no-repeat;
+       @include background-size(cover);
+       @include transition(all 0.3s linear 0s);
+     }
+   }
+   .information-container-block:nth-child(2){
+     .information-block{
+       background: url("../img/AustralianPatents-min.jpeg") no-repeat;
+       @include background-size(cover);
+       @include transition(all 0.3s linear 0s);
+     }
+   }
+   .information-container-block:nth-child(3){
+     .information-block {
+       background: url("../img/BiotechPatents-min.jpeg") no-repeat;
+       @include background-size(cover);
+       @include transition( all 0.3s linear 0s);
+     }
+   }
+   .information-container-block:nth-child(4){
+     .information-block {
+       background: url("../img/DesignRegistrations-min.jpeg") no-repeat;
+       @include background-size(cover);
+       @include transition(all 0.3s linear 0s);
+     }
+   }
+ }
+ .articles{
+   text-align: center;
+   padding: 25px 19.5% 50px 19.5%;
+   @media all and( max-width: 1024px) {
+     padding: 25px 13% 50px 12.6%;
+   }
+   @media all and( max-width: 750px) {
+     padding: 25px 45px 50px 45px;
+   }
+   .block-header{
+     font-size: 36px;
+     @media all and( max-width: 1024px) {
+       font-size: 24px;
+     }
+     @media all and( max-width: 750px) {
+       font-size: 40px;
+     }
+   }
+   .articles-container{
+     @include flexbox();
+     @include flex-wrap(wrap);
+     margin: 55px 0 0 0;
+     @media all and( max-width: 1024px) {
+       margin: 45px 0 0 0;
+     }
+   }
+   .articles-container-block{
+     height: 300px;
+     width: 32%;
+     margin: 0 2% 60px 0;
+     @media all and( max-width: 750px){
+       width: 100%;
+       height: 200px;
+       margin: 0 0 20px 0;
+     }
+   }
+   .articles-container-block:nth-child(3n+3){
+     margin-right: 0;
+   }
+   .articles-container-block:nth-child(7),
+   .articles-container-block:nth-child(8),
+   .articles-container-block:nth-child(9){
+      margin-bottom: 0;
+     @media all and( max-width: 750px){
+       margin-bottom: 20px;
+     }
+   }
+   .articles-container-block:nth-child(1){
+     .img-block{
+       background: url("../img/HowToProtectYourInventionByWayOfAPatent-min.jpeg") no-repeat;
+       background-position: 50%;
+       @include background-size(cover);
+       @include transition(all 0.3s linear 0s);
+     }
+   }
+   .articles-container-block:nth-child(2){
+     .img-block{
+       background: url("../img/CanIBeSuedIfIHaveAPatent-min.jpeg") no-repeat;
+       background-position: 50%;
+       @include background-size(cover);
+       @include transition(all 0.3s linear 0s);
+     }
+   }
+   .articles-container-block:nth-child(3){
+     .img-block{
+       background: url("../img/WhyDoAPatentSearch-min.jpeg") no-repeat;
+       background-position: 50%;
+       @include background-size(cover);
+       @include transition(all 0.3s linear 0s);
+     }
+   }
+   .articles-container-block:nth-child(4){
+     .img-block{
+       background: url("../img/WhatCanEeLearnFromPatentSearches-min.jpg") no-repeat;
+       background-position: 50%;
+       @include background-size(cover);
+       @include transition(all 0.3s linear 0s);
+     }
+   }
+   .articles-container-block:nth-child(5){
+     .img-block{
+       background: url("../img/PatentSearchTips-min.jpeg") no-repeat;
+       background-position: 50%;
+       @include background-size(cover);
+       @include transition(all 0.3s linear 0s);
+     }
+   }
+   .articles-container-block:nth-child(6){
+     .img-block{
+       background: url("../img/WhatDoesNoveltyInventivenessAndUtilityMean-min.jpg") no-repeat;
+       background-position: 50%;
+       @include background-size(cover);
+       @include transition(all 0.3s linear 0s);
+     }
+   }
+   .articles-container-block:nth-child(7){
+     .img-block{
+       background: url("../img/HowToPrototypeCheaplyAndEasily-min.jpg") no-repeat;
+       background-position: 50%;
+       @include background-size(cover);
+       @include transition(all 0.3s linear 0s);
+     }
+   }
+   .articles-container-block:nth-child(8){
+     .img-block{
+       background: url("../img/IsMyIdeaNew-min.jpeg") no-repeat;
+       background-position: 50%;
+       @include background-size(cover);
+       @include transition(all 0.3s linear 0s);
+     }
+   }
+   .articles-container-block:nth-child(9){
+     .img-block{
+       background: url("../img/AdobeStock_76880322-min.jpeg") no-repeat;
+       background-position: 50%;
+       @include background-size(cover);
+       @include transition(all 0.3s linear 0s);
+     }
+   }
+   .href-block{
+     overflow:hidden;
+     display: block;
+     height: 230px;
+     @media all and( max-width: 750px){
+       width: 50%;
+       display: inline-block;
+       margin-right: 15px;
+       float: left;
+       height: 200px;
+     }
+   }
+   .img-block{
+     width: 100%;
+     height: 100%;
+     opacity: 0.8;
+   }
+   .img-block:hover {
+     opacity: 1;
+     z-index: 10;
+     @include transform(scale(1.2));
+   }
+   .articles-text{
+     font: 600 20px open_sans;
+     color: $black5;
+     text-align: left;
+     @media all and( max-width: 1024px) {
+       font-size: 16px;
+     }
+     @media all and( max-width: 750px) {
+       font-size: 19px;
+       line-height: 25px;
+       @include flexbox();
+     }
+   }
+ }
+}
+//---patents-------
+.trademark{
+  .banner {
+    background: url("../img/Trademarks-min.jpeg") no-repeat;
+    @include background-size(cover);
+    background-position: 50%;
+  }
+  .gray-text-block{
+    padding: 85px 19% 55px 18.6%;
+    @media all and( max-width: 1024px) {
+      padding: 85px 13% 55px 12.6%;
+    }
+    @media all and( max-width: 750px) {
+      padding: 15px 13% 15px 12.6%;
+    }
+    .text-block{
+      margin: 36px 0;
+    }
+  }
+  .accordions{
+    padding: 88px 19% 20px 18.6%;
+    @media all and( max-width: 1024px) {
+      padding: 88px 13% 20px 12.6%;
+    }
+    @media all and( max-width: 750px) {
+      padding: 55px 13% 15px 12.6%;
+    }
+  }
+  .story{
+    .story-content{
+      padding: 60px 19% 10px 18.6%;
+      @media all and( max-width: 1024px) {
+        padding: 60px 13% 10px 12.6%;
+      }
+      @media all and( max-width: 750px) {
+        padding: 30px 13% 10px 12.6%;
+      }
+    }
+    .delimiter{
+      margin: 0 0 85px 0;
+      @media all and( max-width: 750px) {
+        margin: 0 0 45px 0;
+      }
+    }
+    .story-text{
+      letter-spacing: 2px;
+      margin-bottom: 37px;
+    }
+    .story-img{
+      margin: 30px 0 57px 0;
+    }
+  }
+  .pricing{
+    padding: 10px 19% 20px 18.6%;
+    @media all and( max-width: 1024px) {
+      padding: 10px 13% 20px 12.6%;
+    }
+    .delimiter{
+      &.one{
+        margin: 20px 0 75px 0;
+        @media all and( max-width: 750px) {
+          margin: 0px 0 45px 0;
+        }
+      }
+      &.two{
+        margin: 75px 0 60px 0;
+        @media all and( max-width: 750px) {
+          margin: 40px 0 25px 0;
+        }
+      }
+    }
+    .pricing-block{
+      width:49%;
+      padding-bottom: 30px;
+      @media all and( max-width: 750px) {
+        width: 100%;
+        padding-bottom: 0;
+      }
+    }
+    .pricing-block:first-of-type{
+      @media all and( max-width: 1410px) {
+        margin-right: 2%;
+      }
+      @media all and( max-width: 750px) {
+        margin-right: 0;
+      }
+    }
+    .pricing-table{
+      margin: 5px 0 40px 0;
+    }
+    .block-header{
+      margin-bottom: 40px;
+      @media all and( max-width: 750px) {
+        margin-bottom: 20px;
+      }
+    }
+    .pricing-header-content{
+      @media all and( max-width: 1410px) {
+        width: auto;
+      }
+    }
+    .pricing-header{
+      @media all and( max-width: 1040px) {
+        min-height: 233px;
+      }
+      @media all and( max-width: 750px) {
+        min-height: 100px;
+      }
+    }
+    .pricing-value{
+      min-height: 228px;
+      @media all and( max-width: 750px) {
+        min-height: 100px;
+      }
+    }
+    .pricing-value:after{
+      content: '';
+    }
+    .pricing-block:last-of-type {
+      .pricing-value:after {
+        content: '';
+      }
+    }
+    .pricing-table:last-of-type{
+      .pricing-block:first-of-type {
+        .pricing-value:after {
+          content: '(recommended)';
+          position: absolute;
+          bottom: 50px;
+          font: 400 25px open_sans;
+          letter-spacing: 6px;
+          left: 50%;
+          @include transform(translateX(-50%));
+          @media all and( max-width: 750px) {
+            bottom: 7px;
+            font-size: 19px;
+          }
+        }
+      }
+    }
+    .pricing-title{
+      font: 600 25px open_sans;
+      text-align: left;
+      letter-spacing: 1.5px;
+      margin: 80px 0 30px 0;
+      @media all and( max-width: 1024px) {
+        font-size: 21px;
+      }
+      @media all and( max-width: 750px) {
+        font-size: 18px;
+        margin: 30px 0 10px 0;
+      }
+    }
+    .pricing-note{
+      margin-top: 60px;
+      text-align: justify;
+      line-height: 35px!important;
+      font: 300 20px open_sans;
+      @media all and( max-width: 1024px) {
+        font-size: 16px;
+        line-height: 24px!important;
+      }
+      @media all and( max-width: 750px) {
+        font-size: 14px;
+        line-height: 18px!important;
+        margin-top: 20px;
+      }
+    }
+  }
+  .additional-information{
+    .information-container{
+      margin: 35px 0 0 0;
+    }
+    .block-header{
+      font-size: 46px;
+      @media all and( max-width: 1024px) {
+        font-size: 24px;
+      }
+      @media all and( max-width: 750px) {
+        font-size: 37px;
+      }
+    }
+    .information-container-block{
+      width: 33.3%;
+      height: 330px;
+      @media all and( max-width: 750px) {
+        width: 100%;
+        height: 150px;
+      }
+    }
+    .information-container-block:nth-child(1){
+      .information-block {
+        background: url("../img/TrademarkAdvice-min.jpeg") no-repeat;
+        @include background-size(cover);
+        @include transition(all 0.3s linear 0s);
+      }
+    }
+    .information-container-block:nth-child(2){
+      .information-block{
+        background: url("../img/TrademarkAttorneys-min.jpeg") no-repeat;
+        @include background-size(cover);
+        @include transition(all 0.3s linear 0s);
+      }
+    }
+    .information-container-block:nth-child(3){
+      .information-block {
+        background: url("../img/TrademarkSearches-min.jpeg") no-repeat;
+        @include background-size(cover);
+        @include transition(all 0.3s linear 0s);
+      }
+    }
+  }
+}
+//---main---
+//---design_registration-------
+.design_registration{
+  .breadcrumb-item{
+    color: #4b4b4b;
+    &.active{
+      color: $gray1;
+    }
+  }
+  .breadcrumb-item:after{
+    color: #4b4b4b;
+  }
+  .banner {
+    background: url("../img/DesignRegistrations-min.jpeg") no-repeat;
+    @include background-size(cover);
+    background-position: 50%;
+  }
+  .gray-text-block{
+    padding-top: 22px;
+    padding-bottom: 1px;
+    .text-header-block{
+      margin: 70px 0 40px 0;
+      @media all and( max-width: 750px){
+        margin: 25px 0;
+      }
+    }
+    .text-block{
+      margin: 35px 0;
+      @media all and( max-width: 750px){
+        margin: 15px 0;
+      }
+    }
+  }
+  .white-text-block{
+    &.last-block{
+      padding-bottom: 65px;
+    }
+  }
+}
+//---biotech patents-------
+.biotech_patents {
+  .breadcrumb-item {
+    color: #4b4b4b;
+  }
+  .breadcrumb-item:after {
+    color: #4b4b4b;
+  }
+  .banner {
+    background: url("../img/BiotechPatents-min.jpeg") no-repeat;
+    @include background-size(cover);
+    background-position: 50%;
+  }
+    .gray-text-block{
+      padding-bottom: 45px;
+      .text-block{
+        margin: 35px 0;
+        @media all and( max-width: 750px){
+          margin: 20px 0;
+        }
+      }
+      .text-header-block{
+        margin: 30px 0 35px 0;
+        @media all and( max-width: 750px){
+          margin: 0 0 35px 0;
+        }
+      }
+    }
+  .white-text-block{
+    padding-bottom: 50px;
+    @media all and( max-width: 750px){
+      padding-bottom: 20px;
+    }
+    .img-block{
+      margin: 45px 0 80px 0;
+    }
+  }
+}
+//---australian patents-------
+.australian_patents{
+  .banner {
+    background: url("../img/AustralianPatents-min.jpeg") no-repeat;
+    @include background-size(cover);
+    background-position: 50%;
+  }
+  .white-text-block{
+    padding-top: 70px;
+    .text-header-block{
+      margin-bottom: 50px;
+    }
+    .text-block{
+      margin: 38px 0;
+      letter-spacing: 1.9px;
+    }
+    .img-block{
+      margin: 6px 0 25px 0;
+    }
+    &.last-block{
+      padding-bottom: 90px;
+    }
+  }
+  .gray-text-block{
+    padding-top: 73px;
+    padding-bottom: 17px;
+    .text-header-block{
+      margin-bottom: 55px;
+    }
+    .text-block{
+     margin: 36px 0;
+    }
+  }
+}
+//---global patents-------
+.global_patents{
+  .breadcrumb{
+    .breadcrumb-item{
+      &.active{
+        color: $gray1;
+      }
+    }
+  }
+  .banner {
+    background: url("../img/GlobalPatents-min.jpeg") no-repeat;
+    @include background-size(cover);
+    background-position: 50%;
+  }
+  .white-text-block{
+    padding-top: 40px;
+    .img-block{
+      margin: 13px 0 60px 0;
+    }
+  }
+}
+//---additional article-------
+.additional_article{
+  .banner{
+    .banner-text{
+      line-height: 63px;
+      letter-spacing: 7.2px;
+      font-size: 48px;
+      padding: 40px 55px 38px 51px;
+      @media all and( max-width: 1024px){
+        width: 467px;
+        font-size: 37px;
+        line-height: 42px;
+        padding: 15px 50px 10px 63px;
+        letter-spacing: 4.5px
+      }
+      @media all and( max-width: 750px) {
+        width: 87%;
+        font-size: 52px;
+        line-height: 58px;
+        padding: 20px 5% 19px 9%;
+        letter-spacing: 6.5px;
+      }
+      @media all and( max-width: 450px) {
+        font-size: 35px;
+        line-height: 40px;
+      }
+    }
+  }
+  .white-text-block{
+    padding-top: 40px;
+    padding-bottom: 70px;
+    .img-block{
+      margin-bottom: 40px;
+    }
+  }
+  .subscribe{
+    border-bottom: 1px solid $gray1;
+  }
+}
+.additional_article_1 {
+  .banner {
+    background: url("../img/HowToProtectYourInventionByWayOfAPatent-min.jpeg") no-repeat;
+    @include background-size(cover);
+    background-position: 50%;
+  }
+}
+.additional_article_2 {
+  .banner {
+    background: url("../img/CanIBeSuedIfIHaveAPatent-min.jpeg") no-repeat;
+    @include background-size(cover);
+    background-position: 50%;
+  }
+}
+.additional_article_3 {
+  .banner {
+    background: url("../img/WhyDoAPatentSearch-min.jpeg") no-repeat;
+    @include background-size(cover);
+    background-position: 50%;
+  }
+}
+.additional_article_4 {
+  .banner {
+    background: url("../img/WhatCanEeLearnFromPatentSearches-min.jpg") no-repeat;
+    @include background-size(cover);
+    background-position: 50%;
+  }
+}
+.additional_article_5 {
+  .breadcrumb-item{
+    &.active{
+      color: $gray1;
+    }
+  }
+  .banner {
+    background: url("../img/PatentSearchTips-min.jpeg") no-repeat;
+    @include background-size(cover);
+    background-position: 50%;
+  }
+}
+.additional_article_6 {
+  .breadcrumb-item{
+    color: #464646;
+  }
+  .breadcrumb-item:after{
+    color: #464646;
+  }
+  .banner {
+    background: url("../img/WhatDoesNoveltyInventivenessAndUtilityMean-min.jpg") no-repeat;
+    @include background-size(cover);
+    background-position: 50%;
+  }
+}.additional_article_7 {
+   .banner {
+     background: url("../img/HowToPrototypeCheaplyAndEasily-min.jpg") no-repeat;
+     @include background-size(cover);
+     background-position: 50%;
+   }
+ }
+.additional_article_8 {
+  .breadcrumb-item{
+    color: #c6c6c6;
+  }
+  .breadcrumb-item:after{
+    color: #c6c6c6;
+  }
+  .banner {
+    background: url("../img/IsMyIdeaNew-min.jpeg") no-repeat;
+    @include background-size(cover);
+    background-position: 50%;
+  }
+}
+.additional_article_9 {
+  .banner {
+    background: url("../img/AdobeStock_76880322-min.jpeg") no-repeat;
+    @include background-size(cover);
+    background-position: 50%;
+  }
+}
+//---trademark attorneys-------
+.trademark_attorneys{
+  .breadcrumb-item{
+    &.active{
+      color:$grey8;
+    }
+  }
+  .banner {
+    background: url("../img/TrademarkAttorneys-min.jpeg") no-repeat;
+    @include background-size(cover);
+    background-position: 50%;
+  }
+  .banner-text{
+    @media all and( max-width: 1024px){
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+  }
+  .white-text-block {
+    text-align: center;
+    padding: 55px 19% 40px 18.6%;
+    @media all and( max-width: 750px){
+      padding: 35px 19% 30px 18.6%;
+    }
+    .text-header-block{
+      margin-top: 20px;
+    }
+    .block-header:after {
+      background: none;
+    }
+    .block-header:before {
+      background: none;
+    }
+    .block-header:first-of-type {
+      margin-top: 20px;
+      margin-bottom: 7px;
+    }
+    .block-header:last-of-type {
+      margin-top: 0;
+      margin-bottom: 80px;
+    }
+  }
+    .gray-text-block{
+      padding: 55px 19% 10px 18.6%;
+      @media all and( max-width: 750px){
+        padding: 35px 19% 10px 18.6%;
+      }
+      .text-header-block{
+        margin-top: 10px;
+      }
+      .text-block{
+        margin: 40px 0;
+      }
+    }
+
+}
+//---trademark advice-------
+.trademark_advice{
+  .banner {
+    background: url("../img/TrademarkAdvice-min.jpeg") no-repeat;
+    @include background-size(cover);
+    background-position: 50%;
+  }
+  .gray-text-block{
+    padding-top: 25px;
+    padding-bottom: 1px;
+    .text-header-block{
+      margin: 70px 0 40px 0;
+    }
+    .text-block{
+      margin: 35px 0;
+    }
+  }
+  .white-text-block{
+    &.last-block{
+      padding-bottom: 65px;
+      .text-header-block{
+        &:not(:first-of-type) {
+          margin-top: 90px;
+        }
+      }
+    }
+  }
+}
+//---trademark searches-------
+.trademarks_searches{
+  .breadcrumb-item{
+    color: $gray3;
+  }
+  .banner {
+    background: url("../img/TrademarkSearches-min.jpeg") no-repeat;
+    @include background-size(cover);
+    background-position: 50%;
+  }
+  .white-text-block{
+    padding: 40px 19% 70px 18.6%;
+    @media all and( max-width: 750px){
+      padding: 30px 19% 30px 18.6%;
+    }
+    .text-block{
+      margin: 38px 0;
+    }
+    .img-block{
+      margin: 30px 0 15px 0;
+    }
+    .delimiter{
+      margin: 63px 0;
+      @media all and( max-width: 750px){
+        margin: 30px 0;
+      }
+    }
+  }
+}
+//---footer---
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 390px;
+  background: $black;
+  @media all and( max-width: 1024px){
+    height: 230px;
+  }
+  @media all and( max-width: 750px){
+      height: 215px;
+  }
+  @media all and( max-width: 500px){
+    height: 245px;
+  }
+  .footer-menu{
+    margin: 40px 0 10px 0;
+    @include flexbox();
+    @include justify-content();
+    width: 100%;
+    list-style: none;
+    text-transform: uppercase;
+
+    @media all and( max-width: 1024px){
+      margin: 15px auto 0 auto;
+      width: 85%;
+    }
+    @media all and( max-width: 750px){
+      display: none;
+    }
+    a{
+      color: $gray1;
+    }
+  }
+  .menu-element {
+    width: 33%;
+    font: 600 18px open_sans;
+    color: $gray1;
+    padding: 15px 0;
+    text-align: center;
+    @media all and( max-width: 1024px){
+      font-size: 13px;
+      padding: 10px 0;
+    }
+  }
+  .menu-line{
+    height: 1px;
+    background: $gray1;
+    margin: 0px 120px;
+    @media all and( max-width: 1300px){
+      margin: 0px 65px;
+    }
+    @media all and( max-width: 750px){
+      display: none;
+    }
+  }
+  .text-contant{
+    margin-top: 65px;
+    @media all and( max-width: 1024px){
+      margin: 50px auto 0 auto;
+      width: 75%;
+    }
+    h1{
+      font: 300 16px open_sans;
+      color: $gray1;
+      text-align: center;
+      margin: 0 0 8px 0;
+      @media all and( max-width: 1024px){
+        font: 300 13px open_sans;
+        margin: 0;
+        line-height: 16px;
+      }
+      @media all and( max-width: 750px){
+        font-size: 12px;
+        line-height: 15px;
+      }
+    }
+    h1:first-of-type{
+      line-height: 28px;
+      @media all and( max-width: 1024px){
+        line-height: 16px;
+      }
+      @media all and( max-width: 750px){
+        line-height: 16px;
+      }
+    }
+    .text-new-line{
+      @media all and( max-width: 1400px){
+        display: none;
+      }
+    }
+  }
+  .social-img-footer{
+    text-align: center;
+    margin: 45px 0;
+    @media all and( max-width: 1024px){
+      margin: 25px 0;
+    }
+    a {
+      display: inline-block;
+      height: 41px;
+      width: 41px;
+      margin: 0 5px;
+      @media all and( max-width: 1024px){
+        height: 21px;
+        width: 21px;
+        margin: 0 2px;
+      }
+    }
+    .img-facebook {
+      background: url("../img/facebook-footer.png") no-repeat;
+      @include background-size();
+    }
+    .img-camera {
+      background: url("../img/instagram-footer.png") no-repeat;
+      @include background-size();
+    }
+    .img-twitter {
+      background: url("../img/twitter-footer.png") no-repeat;
+      @include background-size();
+    }
+    .img-linkedin {
+      background: url("../img/linkedin-footer.png") no-repeat;
+      @include background-size();
+    }
+  }
+}
