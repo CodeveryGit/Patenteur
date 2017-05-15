@@ -18,5 +18,3 @@ Google maps api integrated to shown map positions of addresses shown.
 * CSS
 * JavaScript
 * Bootstrap
-
-
